@@ -1,0 +1,63 @@
+
+- hosts: all
+  tasks:
+    - name: Update repositories cache and install "jre" package
+      become: true
+      apt:
+        name: openjdk-8-jdk
+        update_cache: yes
+    - name: Create Group "tomcat" 
+      become: true
+      group:
+        name: tomcat
+        state: present
+    - name: Agregar usuario tomcat
+      become: true
+      user:
+        name: tomcat
+        shell: /bin/bash
+        home: /opt/tomcat
+        groups: tomcat
+        append: yes        
+    - name: ansible create directory tomcat
+      become: true
+      file:
+        path: /opt/tomcat
+        owner: tomcat
+        group: tomcat
+        state: directory 
+    - name: Download apache-tomcat-8.5.45.tar.gz
+      get_url:
+        url: https://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.45/bin/apache-tomcat-8.5.45.tar.gz
+        dest: /tmp
+    - name: Extract apache-tomcat-8.5.45.tar.gz into /opt/tomcat  
+      become: true
+      unarchive:
+        src: /tmp/apache-tomcat-8.5.45.tar.gz
+        dest: /opt/tomcat
+        group: tomcat
+        owner: tomcat 
+        remote_src: yes
+    - name: Copy file with owner and permissions
+      become: true  
+      copy:
+        src: tomcat.service
+        dest: /etc/systemd/system
+    - name: Start tomcat service
+      become: true  
+      systemd:
+        state: started
+        daemon_reload: yes
+        name: tomcat.service
+    - name: Download Jenkins
+      become: true  
+      get_url:
+        url: http://ftp-nyc.osuosl.org/pub/jenkins/war-stable/2.176.3/jenkins.war
+        group: tomcat
+        owner: tomcat
+        dest: /opt/tomcat/apache-tomcat-8.5.45/webapps/
+
+              
+    
+
+        
