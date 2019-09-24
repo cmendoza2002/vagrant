@@ -11,13 +11,13 @@ Group=tomcat
 Environment="JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/
 Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom"
 
-Environment="CATALINA_BASE=/opt/tomcat/apache-tomcat-8.5.45"
-Environment="CATALINA_HOME=/opt/tomcat/apache-tomcat-8.5.45"
-Environment="CATALINA_PID=/opt/tomcat/apache-tomcat-8.5.45/temp/tomcat.pid"
+Environment="CATALINA_BASE=/opt/tomcat/apache-tomcat-8.5.46"
+Environment="CATALINA_HOME=/opt/tomcat/apache-tomcat-8.5.46"
+Environment="CATALINA_PID=/opt/tomcat/apache-tomcat-8.5.46/temp/tomcat.pid"
 Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
 
-ExecStart=/opt/tomcat/apache-tomcat-8.5.45/bin/startup.sh
-ExecStop=/opt/tomcat/apache-tomcat-8.5.45/bin/shutdown.sh
+ExecStart=/opt/tomcat/apache-tomcat-8.5.46/bin/startup.sh
+ExecStop=/opt/tomcat/apache-tomcat-8.5.46/bin/shutdown.sh
 
 [Install]
 WantedBy=multi-user.target

@@ -55,7 +55,7 @@
         url: http://ftp-nyc.osuosl.org/pub/jenkins/war-stable/2.176.3/jenkins.war
         group: tomcat
         owner: tomcat
-        dest: /opt/tomcat/apache-tomcat-8.5.45/webapps/
+        dest: /opt/tomcat/apache-tomcat-8.5.46/webapps/
 
               
     
