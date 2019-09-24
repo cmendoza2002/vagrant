@@ -26,14 +26,14 @@
         owner: tomcat
         group: tomcat
         state: directory 
-    - name: Download apache-tomcat-8.5.45.tar.gz
+    - name: Download apache-tomcat-8.5.46.tar.gz
       get_url:
-        url: https://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.45/bin/apache-tomcat-8.5.45.tar.gz
+        url: https://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.46/bin/apache-tomcat-8.5.46.tar.gz
         dest: /tmp
     - name: Extract apache-tomcat-8.5.45.tar.gz into /opt/tomcat  
       become: true
       unarchive:
-        src: /tmp/apache-tomcat-8.5.45.tar.gz
+        src: /tmp/apache-tomcat-8.5.46.tar.gz
         dest: /opt/tomcat
         group: tomcat
         owner: tomcat 
